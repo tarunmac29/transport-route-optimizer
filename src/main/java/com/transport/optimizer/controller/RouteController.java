@@ -4,6 +4,7 @@ import com.transport.optimizer.model.Route;
 import com.transport.optimizer.service.RouteService;
 import org.springframework.web.bind.annotation.*;
 import com.transport.optimizer.dto.RouteRequest;
+import com.transport.optimizer.dto.OptimizeResponse;
 
 
 import java.util.List;
@@ -21,6 +22,14 @@ public class RouteController {
     @PostMapping
 public Route createRoute(@RequestBody Route route) {
     return routeService.createRoute(route);
+}
+
+@GetMapping("/optimize")
+public OptimizeResponse optimize(
+        @RequestParam Long from,
+        @RequestParam Long to) {
+
+    return routeService.optimize(from, to);
 }
 
 
