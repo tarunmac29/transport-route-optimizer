@@ -1,5 +1,6 @@
 package com.transport.optimizer.controller;
 
+import com.transport.optimizer.enums.OptimizationType;
 import com.transport.optimizer.model.Route;
 import com.transport.optimizer.service.RouteService;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +28,11 @@ public Route createRoute(@RequestBody Route route) {
 @GetMapping("/optimize")
 public OptimizeResponse optimize(
         @RequestParam Long from,
-        @RequestParam Long to) {
+        @RequestParam Long to,
+        @RequestParam(defaultValue = "time") String type) {
 
-    return routeService.optimize(from, to);
+    OptimizationType optimizationType = OptimizationType.fromString(type);
+    return routeService.optimize(from, to, optimizationType);
 }
 
 

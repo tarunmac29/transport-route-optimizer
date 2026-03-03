@@ -52,9 +52,17 @@ public class TravelTimeStrategy implements RoutingStrategy {
 
         Collections.reverse(path);
 
+        // Validate path - check if destination is reachable from source
+        if (path.isEmpty() || !path.get(0).equals(source)) {
+            return new RouteResultDTO(
+                    Collections.emptyList(),
+                    Double.MAX_VALUE
+            );
+        }
+
         return new RouteResultDTO(
                 path,
-                distances.getOrDefault(destination, -1.0)
+                distances.getOrDefault(destination, Double.MAX_VALUE)
         );
     }
 

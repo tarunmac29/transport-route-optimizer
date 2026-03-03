@@ -1,0 +1,599 @@
+{
+  "info": {
+    "name": "Route Optimizer API Tests",
+    "description": "Comprehensive test suite for the transport route optimization API",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Setup Data",
+      "item": [
+        {
+          "name": "Create Station - Central",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Central Station\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          }
+        },
+        {
+          "name": "Create Station - Airport",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Airport Terminal\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          }
+        },
+        {
+          "name": "Create Station - Business District",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Business District\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          }
+        },
+        {
+          "name": "Create Station - University",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"University Campus\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          }
+        },
+        {
+          "name": "Create Station - Shopping Mall",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Shopping Mall\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          }
+        },
+        {
+          "name": "Create Station - Remote Area",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Remote Area\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          }
+        },
+        {
+          "name": "Create Route - Central to Airport",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromStation\": {\"id\": 1},\n    \"toStation\": {\"id\": 2},\n    \"distanceKm\": 25.5,\n    \"travelTimeMin\": 45,\n    \"fare\": 15.50\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes"]
+            }
+          }
+        },
+        {
+          "name": "Create Route - Central to Business",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromStation\": {\"id\": 1},\n    \"toStation\": {\"id\": 3},\n    \"distanceKm\": 8.2,\n    \"travelTimeMin\": 20,\n    \"fare\": 5.75\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes"]
+            }
+          }
+        },
+        {
+          "name": "Create Route - Business to University",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromStation\": {\"id\": 3},\n    \"toStation\": {\"id\": 4},\n    \"distanceKm\": 12.0,\n    \"travelTimeMin\": 25,\n    \"fare\": 8.25\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes"]
+            }
+          }
+        },
+        {
+          "name": "Create Route - University to Shopping",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromStation\": {\"id\": 4},\n    \"toStation\": {\"id\": 5},\n    \"distanceKm\": 6.8,\n    \"travelTimeMin\": 15,\n    \"fare\": 4.50\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes"]
+            }
+          }
+        },
+        {
+          "name": "Create Route - Business to Shopping (Direct)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromStation\": {\"id\": 3},\n    \"toStation\": {\"id\": 5},\n    \"distanceKm\": 15.3,\n    \"travelTimeMin\": 35,\n    \"fare\": 9.75\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Optimization Tests",
+      "item": [
+        {
+          "name": "Distance Optimization - Central to Shopping",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=5&type=distance",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "5"},
+                {"key": "type", "value": "distance"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response has correct optimization type', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.optimizationType).to.eql('distance');",
+                  "});",
+                  "",
+                  "pm.test('Route is reachable', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.reachable).to.be.true;",
+                  "});",
+                  "",
+                  "pm.test('Path is not empty', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.path).to.be.an('array').that.is.not.empty;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Time Optimization - Central to Shopping",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=5&type=time",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "5"},
+                {"key": "type", "value": "time"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response has correct optimization type', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.optimizationType).to.eql('time');",
+                  "});",
+                  "",
+                  "pm.test('Route is reachable', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.reachable).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Fare Optimization - Central to Shopping",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=5&type=fare",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "5"},
+                {"key": "type", "value": "fare"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response has correct optimization type', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.optimizationType).to.eql('fare');",
+                  "});",
+                  "",
+                  "pm.test('Route is reachable', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.reachable).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Multi-Criteria Optimization - Central to Shopping",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=5&type=multi",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "5"},
+                {"key": "type", "value": "multi"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response has correct optimization type', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.optimizationType).to.eql('multi');",
+                  "});",
+                  "",
+                  "pm.test('Route is reachable', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.reachable).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Default Optimization (No Type)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "5"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Defaults to time optimization', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.optimizationType).to.eql('time');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Edge Cases & Error Tests",
+      "item": [
+        {
+          "name": "Unreachable Destination (Remote Area)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=6&type=distance",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "6"},
+                {"key": "type", "value": "distance"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Route is not reachable', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.reachable).to.be.false;",
+                  "});",
+                  "",
+                  "pm.test('Path is empty for unreachable route', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.path).to.be.an('array').that.is.empty;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Same Source and Destination",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=1&type=time",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "1"},
+                {"key": "type", "value": "time"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Invalid Optimization Type",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes/optimize?from=1&to=5&type=invalid",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes", "optimize"],
+              "query": [
+                {"key": "from", "value": "1"},
+                {"key": "to", "value": "5"},
+                {"key": "type", "value": "invalid"}
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Defaults to time optimization for invalid type', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.optimizationType).to.eql('time');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utility Endpoints",
+      "item": [
+        {
+          "name": "Get All Stations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/stations",
+              "host": ["{{baseUrl}}"],
+              "path": ["stations"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is an array', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get All Routes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["routes"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is an array', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

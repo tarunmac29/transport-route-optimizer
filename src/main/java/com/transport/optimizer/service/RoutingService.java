@@ -3,8 +3,7 @@ package com.transport.optimizer.service;
 import com.transport.optimizer.routing.*;
 import org.springframework.stereotype.Service;
 import com.transport.optimizer.dto.RouteResultDTO;
-
-import java.util.Map;
+import com.transport.optimizer.enums.OptimizationType;
 
 @Service
 public class RoutingService {
@@ -15,27 +14,34 @@ public class RoutingService {
         this.graphBuilderService = graphBuilderService;
     }
 
+    /**
+     * Finds optimal route using clean strategy pattern
+     * No database calls in algorithm loops - graph built once
+     */
     public RouteResultDTO findRoute(Long from, Long to, String type) {
-
+        // Build graph once - all DB calls happen here
         Graph graph = graphBuilderService.buildGraph();
+        
+        // Select strategy based on optimization type
+        RoutingStrategy strategy = getStrategy(type);
+        
+        // Clean algorithm execution - no DB calls
+        return strategy.shortestPath(graph, from, to);
+    }
 
-        RoutingStrategy strategy;
-
-        switch (type.toLowerCase()) {
-            case "distance":
-                strategy = new TravelDistanceStrategy();
-                break;
-            case "fare":
-                strategy = new TravelFareStrategy();
-                break;
-            case "multi":
-                strategy = new MultiCriteriaStrategy();
-                break;
+    private RoutingStrategy getStrategy(String type) {
+        OptimizationType optimizationType = OptimizationType.fromString(type);
+        
+        switch (optimizationType) {
+            case DISTANCE:
+                return new TravelDistanceStrategy();
+            case FARE:
+                return new TravelFareStrategy();
+            case MULTI:
+                return new MultiCriteriaStrategy();
+            case TIME:
             default:
-                strategy = new TravelTimeStrategy();
+                return new TravelTimeStrategy();
         }
-
-        //Map<Long, Double> distances = strategy.shortestPath(graph, from);
-
-        return strategy.shortestPath(graph, from, to);    }
+    }
 }

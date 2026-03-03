@@ -53,8 +53,9 @@ public class MultiCriteriaStrategy implements RoutingStrategy {
             }
         }
 
-        if (!distances.containsKey(destination)) {
-            return new RouteResultDTO(Collections.emptyList(), -1.0);
+        // Check if destination is reachable
+        if (!distances.containsKey(destination) || distances.get(destination) == Double.MAX_VALUE) {
+            return new RouteResultDTO(Collections.emptyList(), Double.MAX_VALUE);
         }
 
         List<Long> path = new ArrayList<>();
@@ -66,6 +67,11 @@ public class MultiCriteriaStrategy implements RoutingStrategy {
         }
 
         Collections.reverse(path);
+
+        // Validate path - check if destination is reachable from source
+        if (path.isEmpty() || !path.get(0).equals(source)) {
+            return new RouteResultDTO(Collections.emptyList(), Double.MAX_VALUE);
+        }
 
         return new RouteResultDTO(path, distances.get(destination));
     }
