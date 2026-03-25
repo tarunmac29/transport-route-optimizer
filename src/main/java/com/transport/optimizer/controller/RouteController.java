@@ -20,24 +20,23 @@ public class RouteController {
         this.routeService = routeService;
     }
 
-    @PostMapping
-public Route createRoute(@RequestBody Route route) {
-    return routeService.createRoute(route);
-}
-
-@GetMapping("/optimize")
-public OptimizeResponse optimize(
-        @RequestParam Long from,
-        @RequestParam Long to,
-        @RequestParam(defaultValue = "time") String type) {
-
-    OptimizationType optimizationType = OptimizationType.fromString(type);
-    return routeService.optimize(from, to, optimizationType);
-}
-
-
     @GetMapping
     public List<Route> getAllRoutes() {
         return routeService.getAllRoutes();
+    }
+
+    @PostMapping
+    public Route createRoute(@RequestBody Route route) {
+        return routeService.createRoute(route);
+    }
+
+    @GetMapping("/optimize")
+    public OptimizeResponse optimize(
+            @RequestParam Long from,
+            @RequestParam Long to,
+            @RequestParam(defaultValue = "time") String type) {
+
+            OptimizationType optimizationType = OptimizationType.fromString(type);
+        return routeService.optimize(from, to, optimizationType);
     }
 }
