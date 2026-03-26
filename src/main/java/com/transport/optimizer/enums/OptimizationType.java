@@ -3,7 +3,6 @@ package com.transport.optimizer.enums;
 public enum OptimizationType {
     DISTANCE("distance"),
     TIME("time"),
-    FARE("fare"),
     MULTI("multi");
     
     private final String value;

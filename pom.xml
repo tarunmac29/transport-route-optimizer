@@ -11,8 +11,8 @@
 	<groupId>com.transport</groupId>
 	<artifactId>optimizer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>transport-route-optimizer</name>
-	<description>Demo project for Spring Boot</description>
+	<name>OptiRoute: Multi-Criteria Transport Optimization Engine</name>
+	<description>OptiRoute engine for multi-criteria transport route optimization using distance, time, fare, and hybrid scoring.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -55,6 +55,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

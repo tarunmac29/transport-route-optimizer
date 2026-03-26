@@ -33,7 +33,7 @@ public class RouteService {
      * Optimizes route based on specified criteria
      * @param fromId source station ID
      * @param toId destination station ID 
-     * @param type optimization type (DISTANCE, TIME, FARE, MULTI)
+      * @param type optimization type (DISTANCE, TIME, MULTI)
      * @return OptimizeResponse with path and metrics
      */
     public OptimizeResponse optimize(Long fromId, Long toId, OptimizationType type) {

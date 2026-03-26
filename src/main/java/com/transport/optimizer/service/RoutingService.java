@@ -35,8 +35,6 @@ public class RoutingService {
         switch (optimizationType) {
             case DISTANCE:
                 return new TravelDistanceStrategy();
-            case FARE:
-                return new TravelFareStrategy();
             case MULTI:
                 return new MultiCriteriaStrategy();
             case TIME:

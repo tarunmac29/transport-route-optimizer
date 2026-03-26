@@ -7,5 +7,5 @@ public class RouteSearchRequest {
 
     private Long fromStationId;
     private Long toStationId;
-    private String type; // time, distance, fare, multi
+    private String type; // time, distance, multi
 }
